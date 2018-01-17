@@ -1,6 +1,6 @@
 <?php
 
-namespace Glooby\Doctrine\QueryBuilder;
+namespace Warrant\Doctrine\QueryBuilder;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\Expr;
