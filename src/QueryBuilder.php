@@ -42,6 +42,9 @@ class QueryBuilder
      */
     public function build(EntityRepository $repo, array $params)
     {
+
+        console_log('here');
+
         $alias = isset($params[Param::ALIAS]) ? $params[Param::ALIAS] : 'xxxx'.random_int(1, 200);
 
         $query = $repo->createQueryBuilder($alias);
