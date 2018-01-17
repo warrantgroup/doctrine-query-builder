@@ -5,8 +5,10 @@ namespace Warrant\Doctrine\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Warrant\ApiBundle\Handler\Decorator\PaginatorDecorator;
 
 /**
  * @author Emil Kilhage
@@ -40,7 +42,7 @@ class QueryBuilder
      *
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function build(EntityRepository $repo, array $params)
+    public function build(EntityRepository $repo, array $params, Request $request)
     {
         $alias = isset($params[Param::ALIAS]) ? $params[Param::ALIAS] : 'xxxx'.random_int(1, 200);
 
@@ -82,7 +84,26 @@ class QueryBuilder
             $this->setParams($query, $params);
         }
 
-        return $query;
+        $paginator = new Paginator($query);
+        $paginator->setUseOutputWalkers(false);
+
+        $paginatorParams = array(
+            'pageSize' => $request->get('pageSize') ?? 50,
+            'currentPage' => $request->get('page') ?? 0,
+            'totalPages' => 0,
+            'count' => 0
+        );
+
+        $paginatorParams['count'] = count($paginator);
+        $paginatorParams['totalPages'] = ceil($paginatorParams['count']/$paginatorParams['pageSize']);
+
+        $paginator->getQuery()
+            ->setFirstResult($paginatorParams['pageSize'] * ($paginatorParams['currentPage'] - 1))
+            ->setMaxResults($paginatorParams['pageSize']);
+
+        $paginatorDecorator = new PaginatorDecorator($paginator);
+
+        return $paginatorDecorator->paginate();
     }
 
     /**
