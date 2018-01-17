@@ -2,11 +2,11 @@
     "name": "warrantgroup/doctrine-query-builder",
     "license": "MIT",
     "type": "library",
-    "description": "Very powerful query builder, perfect for apis",
+    "description": "An elegant lightweight library to dynamically build doctrine queries from structured data. Perfect for an API to interpret how data should be represented without any additional mapping.",
     "authors": [
         {
-            "name": "Emil Kilhage",
-            "email": "emil.kilhage@glooby.com"
+            "name": "Warrant Group Limited",
+            "email": "noreply@warrant-group.com"
         }
     ],
     "autoload": {
