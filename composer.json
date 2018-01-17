@@ -2,7 +2,7 @@
     "name": "warrantgroup/doctrine-query-builder",
     "license": "MIT",
     "type": "library",
-    "description": "Dynamically build doctrine query from structured data",
+    "description": "An elegant lightweight library to dynamically build doctrine queries from structured data. Perfect for an API to interpret how data should be represented without any additional mapping.",
     "authors": [
         {
             "name": "Warrant Group Limited",
