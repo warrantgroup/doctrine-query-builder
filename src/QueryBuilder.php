@@ -84,7 +84,7 @@ class QueryBuilder
             $this->setParams($query, $params);
         }
 
-        $paginator = new Paginator($query);
+        $paginator = new Paginator($query, $fetchJoinCollection = false);
         $paginator->setUseOutputWalkers(false);
 
         $paginatorParams = array(
