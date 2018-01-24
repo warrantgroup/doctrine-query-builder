@@ -1,6 +1,6 @@
 # doctrine-query-builder
 
-Very powerful query builder, perfect to use when building api's or have the need to build very flexible queries
+An elegant lightweight library to dynamically build doctrine queries from structured data. Perfect for an API to interpret how data should be represented without any additional mapping.
 
 Supports unlimited nested AND/OR groups, most of the common SQL operators, joins, order by, distinct etc
 
