@@ -15,7 +15,7 @@ With [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "glooby/doctrine-query-builder": "dev-master"
+        "warrantgroup/doctrine-query-builder": "dev-master"
     }
 }
 ```
@@ -23,7 +23,7 @@ With [Composer](https://getcomposer.org/):
 ### Usage:
 
 ```php
-use \Glooby\Doctrine\QueryBuilder\QueryBuilder;
+use \Warrant\Doctrine\QueryBuilder\QueryBuilder;
 
 $repo = $this->getDoctrine()->getManager()->getRepository('AcmeMainBundle:Person');
 $qb = new QueryBuilder();
